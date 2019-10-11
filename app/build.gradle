@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "cn.chinapost.jdpt.pda.template"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","HOST",'"http://106.14.222.79:10081"')
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+
+    ext.glide = "4.9.0"
+    kapt "com.github.bumptech.glide:compiler:$glide"
+    implementation "com.github.bumptech.glide:glide:$glide"
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.0'
+
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    ext.koin = "2.0.1"
+    implementation "org.koin:koin-core:$koin"
+    implementation "org.koin:koin-android:$koin"
+    implementation "org.koin:koin-android-viewmodel:$koin"
+
+    ext.fuel = "2.2.0"
+    implementation "com.github.kittinunf.fuel:fuel:$fuel"
+    implementation "com.github.kittinunf.fuel:fuel-android:$fuel"
+    implementation "com.github.kittinunf.fuel:fuel-gson:$fuel"
+
+    testImplementation 'junit:junit:4.12'
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.zqb.template.resource.Resource" />
+
+        <import type="com.zqb.template.resource.Status" />
+
+        <variable
+            name="resource"
+            type="Resource" />
+    </data>
+
+    <FrameLayout
+        showHide="@{resource.status == Status.RUNNING}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loading_transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="36dp"
+            android:background="@color/loading_transparent"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDuration="1800" />
+
+    </FrameLayout>
+</layout>
